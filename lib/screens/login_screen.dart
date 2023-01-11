@@ -1,5 +1,7 @@
 import 'package:dio/src/form_data.dart';
 import 'package:flutter/material.dart';
+import 'package:koperasi_undiksha/screens/register_screen.dart';
+import 'package:koperasi_undiksha/services/user_services.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -14,11 +16,16 @@ class _LoginScreenState extends State<LoginScreen> {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  // final _services = ListUsersService();
+  final _services = UserServices();
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text('Login'),
+      ),
       body: MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Center(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:koperasi_undiksha/screens/register_screen.dart';
 import 'package:koperasi_undiksha/wrapper.dart';
 
 void main() {
@@ -18,6 +19,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: Wrapper(),
+      routes: {
+        '/login': (context) => Wrapper(),
+        '/register': (context) => RegisterScreen(),
+      },
     );
   }
 }

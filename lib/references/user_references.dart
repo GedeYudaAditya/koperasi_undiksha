@@ -48,4 +48,14 @@ class UserReferences {
     _prefs = await _pref;
     return _prefs!.getDouble('saldo') ?? 0.0;
   }
+
+  void setNomorRekening(String nomorRekening) async {
+    _prefs = await _pref;
+    _prefs!.setString('nomorRekening', nomorRekening);
+  }
+
+  Future<String> getNomorRekening() async {
+    _prefs = await _pref;
+    return _prefs!.getString('nomorRekening') ?? '';
+  }
 }
