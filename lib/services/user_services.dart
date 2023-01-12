@@ -1,9 +1,11 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:koperasi_undiksha/models/user_model.dart';
 import 'package:koperasi_undiksha/references/user_references.dart';
 
-class UserServices {
+class UserServices extends ChangeNotifier {
   UserReferences userReferences = UserReferences();
+  ChangeNotifier changeNotifier = ChangeNotifier();
 
   String baseUrl = 'http://apikoperasi.rey1024.com/';
 
@@ -32,6 +34,7 @@ class UserServices {
             dynamic user =
                 data.map<UserModel>((u) => UserModel.fromJson(u)).toList();
 
+            notifyListeners();
             return user;
           }
         } else {
@@ -66,6 +69,7 @@ class UserServices {
                 data.map<UserModel>((u) => UserModel.fromJson(u)).toList();
 
             print(data);
+            notifyListeners();
             return user;
           }
         } else {
@@ -113,6 +117,9 @@ class UserServices {
             userReferences.setSaldo(user[0].saldo);
             userReferences.setNomorRekening(user[0].nomorRekening);
 
+            // print(data);
+
+            notifyListeners();
             return user;
           }
         } else {
@@ -127,8 +134,9 @@ class UserServices {
   }
 
   // register user
-  Future<UserModel?> registerUser(
+  Future<bool?> registerUser(
       {required String username,
+      required String nim,
       required String password,
       required String nama}) async {
     Dio dio = Dio();
@@ -143,6 +151,7 @@ class UserServices {
           "username": username,
           "password": password,
           "nama": nama,
+          "nim": nim,
         },
       );
 
@@ -152,23 +161,22 @@ class UserServices {
         var data = json;
 
         if (data['nama'] != null && data['nama'] != '') {
-          print(data);
-
-          UserModel user = UserModel.fromJson(data);
+          // UserModel user = UserModel.fromJson(data);
 
           // simpan data user ke shared preferences
-          userReferences.setUserId(user.userId);
-          userReferences.setUserName(user.username);
-          userReferences.setNama(user.nama);
-          userReferences.setSaldo(user.saldo);
-          userReferences.setNomorRekening(user.nomorRekening);
+          // userReferences.setUserId(user.userId);
+          // userReferences.setUserName(user.username);
+          // userReferences.setNama(user.nama);
+          // userReferences.setSaldo(user.saldo);
+          // userReferences.setNomorRekening(user.nomorRekening);
 
-          return user;
+          notifyListeners();
+          return true;
         } else {
-          return null;
+          return false;
         }
       }
-      return null;
+      return false;
     } on DioError catch (error, stacktrace) {
       print('Exception occured: $error stackTrace: $stacktrace');
       throw Exception(error.response);

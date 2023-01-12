@@ -14,9 +14,9 @@ class UserReferences {
     _prefs!.setString('userId', userId);
   }
 
-  Future<String> getUserId() async {
+  Future<String?> getUserId() async {
     _prefs = await _pref;
-    return _prefs!.getString('userId') ?? '';
+    return _prefs!.getString('userId');
   }
 
   void setUserName(String userName) async {
@@ -24,9 +24,9 @@ class UserReferences {
     _prefs!.setString('userName', userName);
   }
 
-  Future<String> getUserName() async {
+  Future<String?> getUserName() async {
     _prefs = await _pref;
-    return _prefs!.getString('userName') ?? '';
+    return _prefs!.getString('userName');
   }
 
   void setNama(String nama) async {
@@ -34,9 +34,9 @@ class UserReferences {
     _prefs!.setString('nama', nama);
   }
 
-  Future<String> getNama() async {
+  Future<String?> getNama() async {
     _prefs = await _pref;
-    return _prefs!.getString('nama') ?? '';
+    return _prefs!.getString('nama');
   }
 
   void setSaldo(double saldo) async {
@@ -54,8 +54,8 @@ class UserReferences {
     _prefs!.setString('nomorRekening', nomorRekening);
   }
 
-  Future<String> getNomorRekening() async {
+  Future<String?> getNomorRekening() async {
     _prefs = await _pref;
-    return _prefs!.getString('nomorRekening') ?? '';
+    return _prefs!.getString('nomorRekening');
   }
 }

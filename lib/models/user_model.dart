@@ -19,7 +19,7 @@ class UserModel {
       username: json['username'],
       nama: json['nama'],
       saldo: double.parse(json['saldo']),
-      nomorRekening: json['no_rekening'],
+      nomorRekening: json['nomor_rekening'],
     );
   }
 
@@ -29,7 +29,7 @@ class UserModel {
       'username': username,
       'nama': nama,
       'saldo': saldo,
-      'no_rekening': nomorRekening,
+      'nomor_rekening': nomorRekening,
     };
   }
 }

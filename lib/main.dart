@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:koperasi_undiksha/references/user_references.dart';
 import 'package:koperasi_undiksha/screens/register_screen.dart';
+import 'package:koperasi_undiksha/services/user_services.dart';
 import 'package:koperasi_undiksha/wrapper.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,9 +21,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Wrapper(),
+      home: ChangeNotifierProvider(
+        create: (context) => UserServices(),
+        child: Wrapper(),
+      ),
       routes: {
-        '/login': (context) => Wrapper(),
+        '/login': (context) => MyApp(),
         '/register': (context) => RegisterScreen(),
       },
     );
