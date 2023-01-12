@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:koperasi_undiksha/references/user_references.dart';
-import 'package:koperasi_undiksha/screens/login_screen.dart';
 import 'package:koperasi_undiksha/services/user_services.dart';
+
+import 'models/user_model.dart';
 // import 'package:shared_preferences/shared_preferences.dart';
 
 class Wrapper extends StatefulWidget {
@@ -12,8 +13,15 @@ class Wrapper extends StatefulWidget {
 }
 
 class _WrapperState extends State<Wrapper> {
+  final _formKey = GlobalKey<FormState>();
+
   UserReferences userReferences = UserReferences();
   UserServices userServices = UserServices();
+
+  final _usernameController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  final _services = UserServices();
 
   String? userId;
 
@@ -27,11 +35,11 @@ class _WrapperState extends State<Wrapper> {
     });
   }
 
-  @override
-  void initState() {
-    super.initState();
-    awaiting();
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   awaiting();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -42,19 +50,171 @@ class _WrapperState extends State<Wrapper> {
       });
     });
 
-    print('userId: $userId');
+    // print('userId: $userId');
 
-    if (userId != null) {
-      // jika ada, maka arahkan ke halaman home
+    if (userId != null && userId != '') {
       return Scaffold(
-        body: Container(
-          child: const Text('Home'),
+        appBar: AppBar(
+          title: const Text('Home'),
+          actions: [
+            IconButton(
+              onPressed: () {
+                setState(() {
+                  userId = null;
+                  userReferences.setNullAllData();
+                });
+              },
+              icon: const Icon(Icons.logout),
+            ),
+          ],
+        ),
+        body: FutureBuilder<List<UserModel?>>(
+          future: userServices.getUser(userId: userId!),
+          builder: (context, snapshot) {
+            print(snapshot);
+            if (snapshot.hasData) {
+              return Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('Selamat datang, ${snapshot.data![0]!.username}'),
+                    Text('Rekening: ${snapshot.data![0]!.nomorRekening}'),
+                    Text('Email: ${snapshot.data![0]?.username}'),
+                  ],
+                ),
+              );
+            } else {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+          },
         ),
       );
     } else {
       // jika tidak ada, maka arahkan ke halaman login
       return Scaffold(
-        body: LoginScreen(),
+        appBar: AppBar(
+          title: Text('Login Koperasi Undiksha'),
+        ),
+        body: Center(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Image.asset('assets/images/logo.png', width: 200),
+                const SizedBox(height: 20),
+                Container(
+                  margin: EdgeInsets.symmetric(
+                    horizontal: MediaQuery.of(context).size.width * 0.1,
+                  ),
+                  padding: const EdgeInsets.only(
+                      left: 20, right: 20, top: 20, bottom: 10),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(color: Colors.indigo),
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.grey,
+                        blurRadius: 10,
+                        offset: Offset(5, 5),
+                      ),
+                    ],
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Column(
+                    children: [
+                      TextFormField(
+                        controller: _usernameController,
+                        decoration: const InputDecoration(
+                          labelText: 'Username',
+                          border: OutlineInputBorder(
+                            gapPadding: 2.0,
+                          ),
+                          hintText: 'Yuda Aditya',
+                        ),
+                      ),
+                      const Divider(),
+                      TextFormField(
+                        controller: _passwordController,
+                        decoration: const InputDecoration(
+                          labelText: 'Password',
+                          border: OutlineInputBorder(),
+                          hintText: '********',
+                        ),
+                        obscureText: true,
+                      ),
+                      const SizedBox(height: 20),
+                      ElevatedButton(
+                        onPressed: () async {
+                          // Login menggunakan services
+
+                          await _services
+                              .loginUser(
+                            username: _usernameController.text,
+                            password: _passwordController.text,
+                          )
+                              .then((value) {
+                            if (value != [null]) {
+                              // print(value);
+                              setState(() {
+                                userReferences.setUserId(value[0]!.userId);
+                                userId = value[0]!.userId;
+                              });
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('Anda berhasil login'),
+                                ),
+                              );
+                              // Navigator.pushNamedAndRemoveUntil(
+                              //     context, '/login', (route) => false,
+                              //     arguments: value);
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('Username atau Password salah'),
+                                ),
+                              );
+                            }
+                          }).onError((error, stackTrace) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('Username atau Password salah'),
+                              ),
+                            );
+                          });
+                        },
+                        child: const SizedBox(
+                          width: 100,
+                          child: Text(
+                            'Login',
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/register');
+                            },
+                            child: const Text('Daftar Mbanking'),
+                          ),
+                          TextButton(
+                            onPressed: () {},
+                            child: const Text('lupa password?'),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
       );
     }
   }

@@ -58,4 +58,14 @@ class UserReferences {
     _prefs = await _pref;
     return _prefs!.getString('nomorRekening');
   }
+
+  // setting null all data
+  void setNullAllData() async {
+    _prefs = await _pref;
+    _prefs!.setString('userId', '');
+    _prefs!.setString('userName', '');
+    _prefs!.setString('nama', '');
+    _prefs!.setDouble('saldo', 0.0);
+    _prefs!.setString('nomorRekening', '');
+  }
 }
