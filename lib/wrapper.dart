@@ -95,7 +95,7 @@ class _WrapperState extends State<Wrapper> {
                     return Container(
                       decoration: const BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage('assets/images/bg.jpg'),
+                          image: AssetImage('assets/images/bg.png'),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -121,13 +121,11 @@ class _WrapperState extends State<Wrapper> {
                     return Container(
                       decoration: const BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage('assets/images/bg.jpg'),
+                          image: AssetImage('assets/images/bg.png'),
                           fit: BoxFit.cover,
                         ),
                       ),
-                      child: Center(
-                        child: BerandaWidget(myUser: _mod[0]),
-                      ),
+                      child: BerandaWidget(myUser: _mod[0]),
                     );
                   }
                 },

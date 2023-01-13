@@ -2,7 +2,7 @@ class UserModel {
   final String userId;
   final String username; // email
   final String nama;
-  final double saldo;
+  late double saldo;
   final String nomorRekening;
 
   UserModel({

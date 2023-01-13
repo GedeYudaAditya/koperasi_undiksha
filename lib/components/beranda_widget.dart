@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:koperasi_undiksha/models/user_model.dart';
 
 import '../references/user_references.dart';
+import '../services/user_services.dart';
 import 'grid_view_widget.dart';
 
 class BerandaWidget extends StatefulWidget {
@@ -21,13 +22,64 @@ class _BerandaWidgetState extends State<BerandaWidget> {
     return total * persentase / 100;
   }
 
+  UserModel? user;
+
   UserReferences pref = UserReferences();
+
+  UserServices userServices = UserServices();
+
+  updateUser() async {
+    List<UserModel?> userA = await userServices.getUser(userId: user!.userId);
+    user = userA[0];
+    print('updateUser ${user!.saldo}');
+  }
+
+  startUser() {
+    user = widget.myUser;
+    print('startUser ${user!.saldo}');
+  }
+
+  @override
+  void initState() {
+    startUser();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
+          const SizedBox(
+            height: 30,
+          ),
+          const Text('Saldo Anda',
+              style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white),
+              textAlign: TextAlign.center),
+
+          Text('Rp. ${user!.saldo}',
+              style: const TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white),
+              textAlign: TextAlign.center),
+          const SizedBox(
+            height: 20,
+          ),
+          // Tombol Refresh
+          ElevatedButton(
+            onPressed: () async {
+              await updateUser();
+              setState(() {
+                user = user;
+                user!.saldo = user!.saldo;
+              });
+            },
+            child: const Icon(Icons.refresh, color: Colors.white),
+          ),
           const SizedBox(
             height: 20,
           ),
@@ -44,7 +96,7 @@ class _BerandaWidgetState extends State<BerandaWidget> {
               border: Border.all(color: Colors.indigo),
               boxShadow: const [
                 BoxShadow(
-                  color: Colors.grey,
+                  color: Color.fromARGB(110, 0, 0, 0),
                   blurRadius: 10,
                   offset: Offset(5, 5),
                 ),
@@ -60,10 +112,10 @@ class _BerandaWidgetState extends State<BerandaWidget> {
                       hitungPersentase(MediaQuery.of(context).size.width, 25),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    image: DecorationImage(
+                    image: const DecorationImage(
                       // Pakai data dari model
                       image: NetworkImage(
-                          'https://reqres.in/img/faces/${widget.myUser!.userId}-image.jpg'),
+                          'https://reqres.in/img/faces/3-image.jpg'),
                     ),
                   ),
                 ),
@@ -92,7 +144,7 @@ class _BerandaWidgetState extends State<BerandaWidget> {
                           ),
                           Text(
                             // Pakai data dari model
-                            widget.myUser!.nama,
+                            user!.nama,
                             style: const TextStyle(
                               color: Colors.black,
                               fontSize: 16,
@@ -118,14 +170,14 @@ class _BerandaWidgetState extends State<BerandaWidget> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Text(
-                            'Total Saldo Anda',
+                            'Nomor Rekening',
                             style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold),
                           ),
                           Text(
-                            '${widget.myUser!.saldo}',
+                            user!.nomorRekening,
                             style: const TextStyle(
                               color: Colors.black,
                               fontSize: 16,
@@ -155,14 +207,14 @@ class _BerandaWidgetState extends State<BerandaWidget> {
               border: Border.all(color: Colors.indigo),
               boxShadow: const [
                 BoxShadow(
-                  color: Colors.grey,
+                  color: Color.fromARGB(110, 0, 0, 0),
                   blurRadius: 10,
                   offset: Offset(5, 5),
                 ),
               ],
               borderRadius: BorderRadius.circular(10),
             ),
-            child: GridViewWidget(id: widget.myUser!.userId),
+            child: GridViewWidget(id: user!.userId),
           ),
           Container(
             margin: EdgeInsets.symmetric(

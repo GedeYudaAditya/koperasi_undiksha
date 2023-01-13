@@ -58,9 +58,9 @@ class _BerandaWidgetDesktopState extends State<BerandaWidgetDesktop> {
                           MediaQuery.of(context).size.width, 25),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
-                        image: DecorationImage(
+                        image: const DecorationImage(
                           image: NetworkImage(
-                              'https://reqres.in/img/faces/${widget.myUser!.userId}-image.jpg'),
+                              'https://reqres.in/img/faces/3-image.jpg'),
                         ),
                       ),
                     ),

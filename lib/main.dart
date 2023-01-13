@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:koperasi_undiksha/references/user_references.dart';
 import 'package:koperasi_undiksha/screens/register_screen.dart';
+import 'package:koperasi_undiksha/screens/storan_screen.dart';
 import 'package:koperasi_undiksha/services/user_services.dart';
 import 'package:koperasi_undiksha/wrapper.dart';
 import 'package:provider/provider.dart';
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/login': (context) => MyApp(),
         '/register': (context) => RegisterScreen(),
+        '/setor': (context) => Setoran(),
       },
     );
   }

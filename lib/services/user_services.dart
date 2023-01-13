@@ -184,4 +184,52 @@ class UserServices extends ChangeNotifier {
       throw Exception(error.response);
     }
   }
+
+  // Setoran
+  Future<bool?> setoran(
+      {required String userId,
+      required String nominal,
+      required String keterangan}) async {
+    Dio dio = Dio();
+    String url = '${baseUrl}setoran';
+
+    final Response response;
+
+    try {
+      response = await dio.post(
+        url,
+        data: {
+          "user_id": userId,
+          "nominal": nominal,
+          "keterangan": keterangan,
+        },
+      );
+
+      // mengecek apakah berhasil dengan mengecek status code
+      if (response.statusCode == 200) {
+        var json = response.data;
+        var data = json;
+
+        if (data['nama'] != null && data['nama'] != '') {
+          // UserModel user = UserModel.fromJson(data);
+
+          // simpan data user ke shared preferences
+          // userReferences.setUserId(user.userId);
+          // userReferences.setUserName(user.username);
+          // userReferences.setNama(user.nama);
+          // userReferences.setSaldo(user.saldo);
+          // userReferences.setNomorRekening(user.nomorRekening);
+
+          notifyListeners();
+          return true;
+        } else {
+          return false;
+        }
+      }
+      return false;
+    } on DioError catch (error, stacktrace) {
+      print('Exception occured: $error stackTrace: $stacktrace');
+      throw Exception(error.response);
+    }
+  }
 }
