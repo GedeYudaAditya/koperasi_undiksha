@@ -144,8 +144,8 @@ class _BerandaWidgetDesktopState extends State<BerandaWidgetDesktop> {
             flex: 5,
             child: Container(
               // height: hitungPersentase(MediaQuery.of(context).size.height, 48),
-              padding: const EdgeInsets.only(
-                  left: 10, right: 10, top: 10, bottom: 10),
+              // padding: const EdgeInsets.only(
+              //     left: 10, right: 10, top: 10, bottom: 10),
               decoration: BoxDecoration(
                 color: Colors.white,
                 border: Border.all(color: Colors.indigo),

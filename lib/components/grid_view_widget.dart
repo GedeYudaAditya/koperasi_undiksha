@@ -16,55 +16,29 @@ class _GridViewWidgetState extends State<GridViewWidget> {
     return GridView.count(
       shrinkWrap: true,
       primary: false,
-      padding: const EdgeInsets.all(5),
-      crossAxisSpacing: 10,
-      mainAxisSpacing: 10,
+      // padding: const EdgeInsets.all(5),
+      crossAxisSpacing: 5,
+      mainAxisSpacing: 5,
       crossAxisCount: 3,
       children: <Widget>[
-        Container(
-          padding: const EdgeInsets.all(8),
-          color: Colors.teal[100],
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Icon(
-                Icons.account_balance_wallet,
-                size: 50,
-                color: Color.fromARGB(255, 65, 33, 243),
-              ),
-              ResponsiveVisibility(
-                hiddenWhen: [
-                  Condition.smallerThan(name: DESKTOP),
-                ],
-                visibleWhen: [
-                  Condition.smallerThan(name: 'Midle'),
-                ],
-                child: Text(
-                  "Cek Saldo",
-                  style: TextStyle(
-                    color: Color.fromARGB(255, 65, 33, 243),
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
         InkWell(
           onTap: () {
-            // Navigator.push(context,
-            //     MaterialPageRoute(builder: (context) => ListUserPage()));
+            Navigator.pushNamed(context, '/transfer', arguments: widget.id);
           },
           child: Container(
-            padding: const EdgeInsets.all(8),
-            color: Colors.teal[100],
+            // padding: const EdgeInsets.all(8),
+            // color: Colors.teal[100],
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: const [
-                Icon(
-                  Icons.money,
-                  size: 50,
-                  color: Color.fromARGB(255, 65, 33, 243),
+                // Rounded icon
+                CircleAvatar(
+                  backgroundColor: Color.fromARGB(249, 32, 154, 220),
+                  child: Icon(
+                    Icons.compare_arrows,
+                    size: 30,
+                    color: Color.fromARGB(255, 255, 255, 255),
+                  ),
                 ),
                 ResponsiveVisibility(
                   hiddenWhen: [
@@ -90,15 +64,18 @@ class _GridViewWidgetState extends State<GridViewWidget> {
             Navigator.pushNamed(context, '/tarik', arguments: widget.id);
           },
           child: Container(
-            padding: const EdgeInsets.all(8),
-            color: Colors.teal[100],
+            // padding: const EdgeInsets.all(8),
+            // color: Colors.teal[100],
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: const [
-                Icon(
-                  Icons.attach_money,
-                  size: 50,
-                  color: Color.fromARGB(255, 65, 33, 243),
+                CircleAvatar(
+                  backgroundColor: Color.fromARGB(249, 32, 154, 220),
+                  child: Icon(
+                    Icons.card_membership,
+                    size: 30,
+                    color: Color.fromARGB(255, 255, 255, 255),
+                  ),
                 ),
                 ResponsiveVisibility(
                   hiddenWhen: [
@@ -119,91 +96,41 @@ class _GridViewWidgetState extends State<GridViewWidget> {
             ),
           ),
         ),
-        Container(
-          padding: const EdgeInsets.all(8),
-          color: Colors.teal[100],
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Icon(
-                Icons.credit_card,
-                size: 50,
-                color: Color.fromARGB(255, 65, 33, 243),
-              ),
-              ResponsiveVisibility(
-                hiddenWhen: [
-                  Condition.smallerThan(name: DESKTOP),
-                ],
-                visibleWhen: [
-                  Condition.smallerThan(name: 'Midle'),
-                ],
-                child: Text(
-                  "Pembayaran",
-                  style: TextStyle(
-                    color: Color.fromARGB(255, 65, 33, 243),
-                    fontWeight: FontWeight.bold,
+        InkWell(
+          onTap: () {
+            Navigator.pushNamed(context, '/setor', arguments: widget.id);
+          },
+          child: Container(
+            // padding: const EdgeInsets.all(8),
+            // color: Colors.teal[100],
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                CircleAvatar(
+                  backgroundColor: Color.fromARGB(249, 32, 154, 220),
+                  child: Icon(
+                    Icons.add_card,
+                    size: 30,
+                    color: Color.fromARGB(255, 255, 255, 255),
                   ),
                 ),
-              ),
-            ],
-          ),
-        ),
-        Container(
-          padding: const EdgeInsets.all(8),
-          color: Colors.teal[100],
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Icon(
-                Icons.monitor_weight,
-                size: 50,
-                color: Color.fromARGB(255, 65, 33, 243),
-              ),
-              ResponsiveVisibility(
-                hiddenWhen: [
-                  Condition.smallerThan(name: DESKTOP),
-                ],
-                visibleWhen: [
-                  Condition.smallerThan(name: 'Midle'),
-                ],
-                child: Text(
-                  "Peminjaman",
-                  style: TextStyle(
-                    color: Color.fromARGB(255, 65, 33, 243),
-                    fontWeight: FontWeight.bold,
+                ResponsiveVisibility(
+                  hiddenWhen: [
+                    Condition.smallerThan(name: DESKTOP),
+                  ],
+                  visibleWhen: [
+                    Condition.smallerThan(name: 'Midle'),
+                  ],
+                  child: Text(
+                    "Storan",
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 65, 33, 243),
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
-        ),
-        Container(
-          padding: const EdgeInsets.all(8),
-          color: Colors.teal[100],
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Icon(
-                Icons.account_balance,
-                size: 50,
-                color: Color.fromARGB(255, 65, 33, 243),
-              ),
-              ResponsiveVisibility(
-                hiddenWhen: [
-                  Condition.smallerThan(name: DESKTOP),
-                ],
-                visibleWhen: [
-                  Condition.smallerThan(name: 'Midle'),
-                ],
-                child: Text(
-                  "Cek Mutasi",
-                  style: TextStyle(
-                    color: Color.fromARGB(255, 65, 33, 243),
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ],

@@ -148,8 +148,8 @@ class _BerandaWidgetState extends State<BerandaWidget> {
               horizontal:
                   hitungPersentase(MediaQuery.of(context).size.width, 3),
             ),
-            padding:
-                const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
+            // padding:
+            //     const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
             decoration: BoxDecoration(
               color: Colors.white,
               border: Border.all(color: Colors.indigo),
@@ -197,7 +197,7 @@ class _BerandaWidgetState extends State<BerandaWidget> {
                 const Icon(
                   Icons.phone,
                   size: 100,
-                  color: const Color.fromARGB(255, 65, 33, 243),
+                  color: Color.fromARGB(255, 65, 33, 243),
                 ),
               ],
             ),

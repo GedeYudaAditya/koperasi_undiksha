@@ -92,25 +92,43 @@ class _WrapperState extends State<Wrapper> {
               return LayoutBuilder(
                 builder: (context, constraints) {
                   if (constraints.maxWidth > 600) {
-                    return Column(
-                      children: [
-                        Expanded(
-                          flex: 9,
-                          child: Container(
-                            margin: const EdgeInsets.only(
-                              top: 10,
-                            ),
-                            child: BerandaWidgetDesktop(myUser: _mod[0]),
-                          ),
+                    return Container(
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage('assets/images/bg.jpg'),
+                          fit: BoxFit.cover,
                         ),
-                        const Expanded(
-                          flex: 3,
-                          child: ContactWidget(),
-                        )
-                      ],
+                      ),
+                      child: Column(
+                        children: [
+                          Expanded(
+                            flex: 9,
+                            child: Container(
+                              margin: const EdgeInsets.only(
+                                top: 10,
+                              ),
+                              child: BerandaWidgetDesktop(myUser: _mod[0]),
+                            ),
+                          ),
+                          const Expanded(
+                            flex: 3,
+                            child: ContactWidget(),
+                          )
+                        ],
+                      ),
                     );
                   } else {
-                    return Center(child: BerandaWidget(myUser: _mod[0]));
+                    return Container(
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage('assets/images/bg.jpg'),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      child: Center(
+                        child: BerandaWidget(myUser: _mod[0]),
+                      ),
+                    );
                   }
                 },
               );
