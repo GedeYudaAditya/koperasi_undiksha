@@ -31,10 +31,12 @@ class UserServices extends ChangeNotifier {
 
         if (data[0]['nama'] != null && data[0]['nama'] != '') {
           if (data is List) {
-            dynamic user =
+            List<UserModel> user =
                 data.map<UserModel>((u) => UserModel.fromJson(u)).toList();
 
+            // print(user[0].nama);
             notifyListeners();
+
             return user;
           }
         } else {
@@ -68,7 +70,7 @@ class UserServices extends ChangeNotifier {
             dynamic user =
                 data.map<UserModel>((u) => UserModel.fromJson(u)).toList();
 
-            print(data);
+            // print(data);
             notifyListeners();
             return user;
           }
