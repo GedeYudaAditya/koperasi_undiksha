@@ -308,6 +308,9 @@ class _WrapperState extends State<Wrapper> {
 
     setState(() {
       _scanBarcode = barcodeScanRes;
+
+      Navigator.pushNamed(context, '/transfer', arguments: _scanBarcode);
+
       final Uri url = Uri.parse(_scanBarcode);
       _launchUrl(url);
     });

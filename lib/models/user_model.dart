@@ -3,6 +3,7 @@ class UserModel {
   final String username; // email
   final String nama;
   late double saldo;
+  final String password;
   final String nomorRekening;
 
   UserModel({
@@ -10,6 +11,7 @@ class UserModel {
     required this.username,
     required this.nama,
     required this.saldo,
+    required this.password,
     required this.nomorRekening,
   });
 
@@ -19,6 +21,7 @@ class UserModel {
       username: json['username'],
       nama: json['nama'],
       saldo: double.parse(json['saldo']),
+      password: json['password'],
       nomorRekening: json['nomor_rekening'],
     );
   }
@@ -29,6 +32,7 @@ class UserModel {
       'username': username,
       'nama': nama,
       'saldo': saldo,
+      'password': password,
       'nomor_rekening': nomorRekening,
     };
   }

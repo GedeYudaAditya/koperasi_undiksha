@@ -44,9 +44,19 @@ class UserReferences {
     _prefs!.setDouble('saldo', saldo);
   }
 
-  Future<double> getSaldo() async {
+  Future<double?> getSaldo() async {
     _prefs = await _pref;
-    return _prefs!.getDouble('saldo') ?? 0.0;
+    return _prefs!.getDouble('saldo');
+  }
+
+  void setPassword(String password) async {
+    _prefs = await _pref;
+    _prefs!.setString('password', password);
+  }
+
+  Future<String?> getPassword() async {
+    _prefs = await _pref;
+    return _prefs!.getString('password');
   }
 
   void setNomorRekening(String nomorRekening) async {
@@ -66,6 +76,18 @@ class UserReferences {
     _prefs!.setString('userName', '');
     _prefs!.setString('nama', '');
     _prefs!.setDouble('saldo', 0.0);
+    _prefs!.setString('password', '');
     _prefs!.setString('nomorRekening', '');
+  }
+
+  // QR scan result
+  void setQrScanResult(String qrScanResult) async {
+    _prefs = await _pref;
+    _prefs!.setString('qrScanResult', qrScanResult);
+  }
+
+  Future<String?> getQrScanResult() async {
+    _prefs = await _pref;
+    return _prefs!.getString('qrScanResult');
   }
 }

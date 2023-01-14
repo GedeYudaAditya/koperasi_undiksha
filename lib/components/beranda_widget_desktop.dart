@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 import '../models/user_model.dart';
 import 'grid_view_widget.dart';
@@ -56,12 +57,17 @@ class _BerandaWidgetDesktopState extends State<BerandaWidgetDesktop> {
                       height: 200,
                       width: hitungPersentase(
                           MediaQuery.of(context).size.width, 25),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        image: const DecorationImage(
-                          image: NetworkImage(
-                              'https://reqres.in/img/faces/3-image.jpg'),
-                        ),
+                      // decoration: BoxDecoration(
+                      //   borderRadius: BorderRadius.circular(20),
+                      //   image: const DecorationImage(
+                      //     image: NetworkImage(
+                      //         'https://reqres.in/img/faces/3-image.jpg'),
+                      //   ),
+                      // ),
+                      child: QrImage(
+                        data: widget.myUser!.nomorRekening,
+                        version: QrVersions.auto,
+                        size: 200.0,
                       ),
                     ),
                   ),

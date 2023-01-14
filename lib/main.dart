@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:koperasi_undiksha/references/user_references.dart';
 import 'package:koperasi_undiksha/screens/register_screen.dart';
 import 'package:koperasi_undiksha/screens/storan_screen.dart';
+import 'package:koperasi_undiksha/screens/tarik_screen.dart';
+import 'package:koperasi_undiksha/screens/transfer_screen.dart';
 import 'package:koperasi_undiksha/services/user_services.dart';
 import 'package:koperasi_undiksha/wrapper.dart';
 import 'package:provider/provider.dart';
@@ -43,6 +45,8 @@ class MyApp extends StatelessWidget {
         '/login': (context) => MyApp(),
         '/register': (context) => RegisterScreen(),
         '/setor': (context) => Setoran(),
+        '/tarik': (context) => Tarikan(),
+        '/transfer': (context) => Transfer(),
       },
     );
   }

@@ -23,7 +23,7 @@ class _GridViewWidgetState extends State<GridViewWidget> {
       children: <Widget>[
         InkWell(
           onTap: () {
-            Navigator.pushNamed(context, '/transfer', arguments: widget.id);
+            Navigator.pushNamed(context, '/transfer');
           },
           child: Container(
             // padding: const EdgeInsets.all(8),
@@ -61,7 +61,7 @@ class _GridViewWidgetState extends State<GridViewWidget> {
         ),
         InkWell(
           onTap: () {
-            Navigator.pushNamed(context, '/tarik', arguments: widget.id);
+            Navigator.pushNamed(context, '/tarik');
           },
           child: Container(
             // padding: const EdgeInsets.all(8),
@@ -98,7 +98,7 @@ class _GridViewWidgetState extends State<GridViewWidget> {
         ),
         InkWell(
           onTap: () {
-            Navigator.pushNamed(context, '/setor', arguments: widget.id);
+            Navigator.pushNamed(context, '/setor');
           },
           child: Container(
             // padding: const EdgeInsets.all(8),

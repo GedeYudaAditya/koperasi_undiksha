@@ -7,6 +7,8 @@ import '../references/user_references.dart';
 import '../services/user_services.dart';
 import 'grid_view_widget.dart';
 
+import 'package:qr_flutter/qr_flutter.dart';
+
 class BerandaWidget extends StatefulWidget {
   BerandaWidget({Key? key, this.myUser}) : super(key: key);
 
@@ -110,13 +112,18 @@ class _BerandaWidgetState extends State<BerandaWidget> {
                   height: 120,
                   width:
                       hitungPersentase(MediaQuery.of(context).size.width, 25),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    image: const DecorationImage(
-                      // Pakai data dari model
-                      image: NetworkImage(
-                          'https://reqres.in/img/faces/3-image.jpg'),
-                    ),
+                  // decoration: BoxDecoration(
+                  //   borderRadius: BorderRadius.circular(20),
+                  //   image: const DecorationImage(
+                  //     // Pakai data dari model
+                  //     image: NetworkImage(
+                  //         'https://reqres.in/img/faces/3-image.jpg'),
+                  //   ),
+                  // ),
+                  child: QrImage(
+                    data: user!.nomorRekening,
+                    version: QrVersions.auto,
+                    size: 200.0,
                   ),
                 ),
                 Column(
