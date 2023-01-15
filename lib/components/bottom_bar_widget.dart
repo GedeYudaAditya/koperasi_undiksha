@@ -11,7 +11,7 @@ class _BottomBarWidgetState extends State<BottomBarWidget> {
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
-      color: Colors.indigo[200],
+      color: Color.fromARGB(255, 134, 150, 218),
       shape: const CircularNotchedRectangle(),
       child: Container(
         alignment: Alignment.center,

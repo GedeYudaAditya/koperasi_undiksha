@@ -128,13 +128,28 @@ class _TransferState extends State<Transfer> {
     }
 
     return Scaffold(
+        // extendBodyBehindAppBar: true,
         appBar: AppBar(
+          centerTitle: true,
+          // shape: const RoundedRectangleBorder(
+          //   borderRadius: BorderRadius.vertical(
+          //     bottom: Radius.circular(10),
+          //   ),
+          // ),
+          // leading: Container(
+          //   margin: const EdgeInsets.only(left: 10),
+          //   child: Image.asset('assets/images/logo.png'),
+          // ),
+          backgroundColor: Color.fromARGB(255, 103, 2, 255),
           title: const Text('Transfer Saldo'),
         ),
         body: FutureBuilder(
           builder: (context, snapshot) {
             if (myUser != null) {
               return Container(
+                // padding: const EdgeInsets.only(
+                //   top: 65,
+                // ),
                 width: double.infinity,
                 height: double.infinity,
                 decoration: const BoxDecoration(

@@ -28,21 +28,23 @@ class MyApp extends StatelessWidget {
           breakpoints: const [
             ResponsiveBreakpoint.resize(450, name: MOBILE),
             ResponsiveBreakpoint.resize(600, name: 'Midle'),
+            ResponsiveBreakpoint.resize(700, name: 'MidleLarge'),
             ResponsiveBreakpoint.autoScale(800, name: TABLET),
+            ResponsiveBreakpoint.autoScaleDown(900, name: 'LargeTablet'),
             ResponsiveBreakpoint.resize(1000, name: DESKTOP),
           ],
           background: Container(color: const Color(0xFFF5F5F5))),
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.indigo,
       ),
       home: ChangeNotifierProvider(
         create: (context) => UserServices(),
         child: Wrapper(),
       ),
       routes: {
-        '/login': (context) => MyApp(),
+        '/login': (context) => Wrapper(),
         '/register': (context) => RegisterScreen(),
         '/setor': (context) => Setoran(),
         '/tarik': (context) => Tarikan(),

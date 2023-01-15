@@ -20,20 +20,23 @@ class _GridViewWidgetState extends State<GridViewWidget> {
       crossAxisSpacing: 5,
       mainAxisSpacing: 5,
       crossAxisCount: 3,
+      childAspectRatio: 2,
       children: <Widget>[
         InkWell(
           onTap: () {
             Navigator.pushNamed(context, '/transfer');
           },
           child: Container(
+            alignment: Alignment.center,
             // padding: const EdgeInsets.all(8),
             // color: Colors.teal[100],
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: const [
                 // Rounded icon
                 CircleAvatar(
-                  backgroundColor: Color.fromARGB(249, 32, 154, 220),
+                  backgroundColor: Color.fromARGB(255, 43, 82, 255),
                   child: Icon(
                     Icons.compare_arrows,
                     size: 30,
@@ -45,7 +48,7 @@ class _GridViewWidgetState extends State<GridViewWidget> {
                     Condition.smallerThan(name: DESKTOP),
                   ],
                   visibleWhen: [
-                    Condition.smallerThan(name: 'Midle'),
+                    Condition.smallerThan(name: 'MidleLarge'),
                   ],
                   child: Text(
                     "Transfer",
@@ -70,7 +73,7 @@ class _GridViewWidgetState extends State<GridViewWidget> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: const [
                 CircleAvatar(
-                  backgroundColor: Color.fromARGB(249, 32, 154, 220),
+                  backgroundColor: Color.fromARGB(255, 43, 82, 255),
                   child: Icon(
                     Icons.card_membership,
                     size: 30,
@@ -82,7 +85,7 @@ class _GridViewWidgetState extends State<GridViewWidget> {
                     Condition.smallerThan(name: DESKTOP),
                   ],
                   visibleWhen: [
-                    Condition.smallerThan(name: 'Midle'),
+                    Condition.smallerThan(name: 'MidleLarge'),
                   ],
                   child: Text(
                     "Tarik",
@@ -107,7 +110,7 @@ class _GridViewWidgetState extends State<GridViewWidget> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: const [
                 CircleAvatar(
-                  backgroundColor: Color.fromARGB(249, 32, 154, 220),
+                  backgroundColor: Color.fromARGB(255, 43, 82, 255),
                   child: Icon(
                     Icons.add_card,
                     size: 30,
@@ -119,7 +122,7 @@ class _GridViewWidgetState extends State<GridViewWidget> {
                     Condition.smallerThan(name: DESKTOP),
                   ],
                   visibleWhen: [
-                    Condition.smallerThan(name: 'Midle'),
+                    Condition.smallerThan(name: 'MidleLarge'),
                   ],
                   child: Text(
                     "Storan",

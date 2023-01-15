@@ -14,7 +14,7 @@ class ContactWidget extends StatelessWidget {
         vertical: hitungPersentase(MediaQuery.of(context).size.height, 2),
       ),
       padding: const EdgeInsets.all(10),
-      color: Colors.teal[100],
+      color: Color.fromARGB(255, 178, 186, 223),
       alignment: Alignment.centerLeft,
       width: double.infinity,
       child: Row(

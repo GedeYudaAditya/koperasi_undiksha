@@ -69,7 +69,19 @@ class _WrapperState extends State<Wrapper> {
 
     if (userId != null && userId != '') {
       return Scaffold(
+        // extendBodyBehindAppBar: true,
         appBar: AppBar(
+          centerTitle: true,
+          // shape: const RoundedRectangleBorder(
+          //   borderRadius: BorderRadius.vertical(
+          //     bottom: Radius.circular(10),
+          //   ),
+          // ),
+          // leading: Container(
+          //   margin: const EdgeInsets.only(left: 10),
+          //   child: Image.asset('assets/images/logo.png'),
+          // ),
+          backgroundColor: Color.fromARGB(255, 103, 2, 255),
           title: const Text('Mobile banking Undiksha'),
           actions: [
             IconButton(
@@ -99,22 +111,21 @@ class _WrapperState extends State<Wrapper> {
                           fit: BoxFit.cover,
                         ),
                       ),
-                      child: Column(
-                        children: [
-                          Expanded(
-                            flex: 9,
-                            child: Container(
-                              margin: const EdgeInsets.only(
-                                top: 10,
-                              ),
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            Container(
+                              // margin: const EdgeInsets.only(
+                              //   top: 10,
+                              // ),
                               child: BerandaWidgetDesktop(myUser: _mod[0]),
                             ),
-                          ),
-                          const Expanded(
-                            flex: 3,
-                            child: ContactWidget(),
-                          )
-                        ],
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height * 0.1,
+                            ),
+                            const ContactWidget()
+                          ],
+                        ),
                       ),
                     );
                   } else {
@@ -160,126 +171,147 @@ class _WrapperState extends State<Wrapper> {
     } else {
       // jika tidak ada, maka arahkan ke halaman login
       return Scaffold(
+        // extendBodyBehindAppBar: true,
         appBar: AppBar(
           title: const Text('Login Koperasi Undiksha'),
+          centerTitle: true,
+          // shape: const RoundedRectangleBorder(
+          //   borderRadius: BorderRadius.vertical(
+          //     bottom: Radius.circular(10),
+          //   ),
+          // ),
+          // leading: Container(
+          //   margin: const EdgeInsets.only(left: 10),
+          //   child: Image.asset('assets/images/logo.png'),
+          // ),
+          backgroundColor: Color.fromARGB(255, 103, 2, 255),
         ),
-        body: Center(
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Image.asset('assets/images/logo.png', width: 200),
-                const SizedBox(height: 20),
-                Container(
-                  margin: EdgeInsets.symmetric(
-                    horizontal: MediaQuery.of(context).size.width * 0.1,
-                  ),
-                  padding: const EdgeInsets.only(
-                      left: 20, right: 20, top: 20, bottom: 10),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.indigo),
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Colors.grey,
-                        blurRadius: 10,
-                        offset: Offset(5, 5),
-                      ),
-                    ],
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Column(
-                    children: [
-                      TextFormField(
-                        // key: _formKey,
-                        controller: _usernameController,
-                        decoration: const InputDecoration(
-                          labelText: 'Username',
-                          border: OutlineInputBorder(
-                            gapPadding: 2.0,
+        body: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/images/bg.png'),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: Center(
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Image.asset('assets/images/logo.png', width: 200),
+                  const SizedBox(height: 20),
+                  Container(
+                    margin: EdgeInsets.symmetric(
+                      horizontal: MediaQuery.of(context).size.width * 0.1,
+                    ),
+                    padding: const EdgeInsets.only(
+                        left: 20, right: 20, top: 20, bottom: 10),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border.all(color: Colors.indigo),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.grey,
+                          blurRadius: 10,
+                          offset: Offset(5, 5),
+                        ),
+                      ],
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Column(
+                      children: [
+                        TextFormField(
+                          // key: _formKey,
+                          controller: _usernameController,
+                          decoration: const InputDecoration(
+                            labelText: 'Username',
+                            border: OutlineInputBorder(
+                              gapPadding: 2.0,
+                            ),
+                            hintText: 'Yuda Aditya',
                           ),
-                          hintText: 'Yuda Aditya',
                         ),
-                      ),
-                      const Divider(),
-                      TextFormField(
-                        // key: _formKey,
-                        controller: _passwordController,
-                        decoration: const InputDecoration(
-                          labelText: 'Password',
-                          border: OutlineInputBorder(),
-                          hintText: '********',
+                        const Divider(),
+                        TextFormField(
+                          // key: _formKey,
+                          controller: _passwordController,
+                          decoration: const InputDecoration(
+                            labelText: 'Password',
+                            border: OutlineInputBorder(),
+                            hintText: '********',
+                          ),
+                          obscureText: true,
                         ),
-                        obscureText: true,
-                      ),
-                      const SizedBox(height: 20),
-                      ElevatedButton(
-                        onPressed: () async {
-                          // Login menggunakan services
+                        const SizedBox(height: 20),
+                        ElevatedButton(
+                          onPressed: () async {
+                            // Login menggunakan services
 
-                          await _services
-                              .loginUser(
-                            username: _usernameController.text,
-                            password: _passwordController.text,
-                          )
-                              .then((value) {
-                            if (value != [null]) {
-                              // print(value);
-                              setState(() {
-                                userReferences.setUserId(value[0]!.userId);
-                                userId = value[0]!.userId;
-                              });
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text('Anda berhasil login'),
-                                ),
-                              );
-                              // Navigator.pushNamedAndRemoveUntil(
-                              //     context, '/login', (route) => false,
-                              //     arguments: value);
-                            } else {
+                            await _services
+                                .loginUser(
+                              username: _usernameController.text,
+                              password: _passwordController.text,
+                            )
+                                .then((value) {
+                              if (value != [null]) {
+                                // print(value);
+                                setState(() {
+                                  userReferences.setUserId(value[0]!.userId);
+                                  userId = value[0]!.userId;
+                                });
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text('Anda berhasil login'),
+                                  ),
+                                );
+                                // Navigator.pushNamedAndRemoveUntil(
+                                //     context, '/login', (route) => false,
+                                //     arguments: value);
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content:
+                                        Text('Username atau Password salah'),
+                                  ),
+                                );
+                              }
+                            }).onError((error, stackTrace) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
                                   content: Text('Username atau Password salah'),
                                 ),
                               );
-                            }
-                          }).onError((error, stackTrace) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text('Username atau Password salah'),
-                              ),
-                            );
-                          });
-                        },
-                        child: const SizedBox(
-                          width: 100,
-                          child: Text(
-                            'Login',
-                            textAlign: TextAlign.center,
+                            });
+                          },
+                          child: const SizedBox(
+                            width: 100,
+                            child: Text(
+                              'Login',
+                              textAlign: TextAlign.center,
+                            ),
                           ),
                         ),
-                      ),
-                      const SizedBox(height: 20),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          TextButton(
-                            onPressed: () {
-                              Navigator.pushNamed(context, '/register');
-                            },
-                            child: const Text('Daftar Mbanking'),
-                          ),
-                          TextButton(
-                            onPressed: () {},
-                            child: const Text('lupa password?'),
-                          ),
-                        ],
-                      ),
-                    ],
+                        const SizedBox(height: 20),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pushNamed(context, '/register');
+                              },
+                              child: const Text('Daftar Mbanking'),
+                            ),
+                            TextButton(
+                              onPressed: () {},
+                              child: const Text('lupa password?'),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

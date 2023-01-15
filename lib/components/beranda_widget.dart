@@ -109,7 +109,6 @@ class _BerandaWidgetState extends State<BerandaWidget> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Container(
-                  height: 120,
                   width:
                       hitungPersentase(MediaQuery.of(context).size.width, 25),
                   // decoration: BoxDecoration(
@@ -123,7 +122,6 @@ class _BerandaWidgetState extends State<BerandaWidget> {
                   child: QrImage(
                     data: user!.nomorRekening,
                     version: QrVersions.auto,
-                    size: 200.0,
                   ),
                 ),
                 Column(
@@ -136,7 +134,7 @@ class _BerandaWidgetState extends State<BerandaWidget> {
                       width: hitungPersentase(
                           MediaQuery.of(context).size.width, 60),
                       decoration: BoxDecoration(
-                        color: Colors.teal[100],
+                        color: Color.fromARGB(255, 178, 186, 223),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Column(
@@ -170,7 +168,7 @@ class _BerandaWidgetState extends State<BerandaWidget> {
                       width: hitungPersentase(
                           MediaQuery.of(context).size.width, 60),
                       decoration: BoxDecoration(
-                        color: Colors.teal[100],
+                        color: Color.fromARGB(255, 178, 186, 223),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Column(
@@ -202,7 +200,8 @@ class _BerandaWidgetState extends State<BerandaWidget> {
             height: 20,
           ),
           Container(
-            // height: hitungPersentase(MediaQuery.of(context).size.height, 48),
+            alignment: Alignment.center,
+            // height: hitungPersentase(MediaQuery.of(context).size.height, 20),
             margin: EdgeInsets.symmetric(
               horizontal:
                   hitungPersentase(MediaQuery.of(context).size.width, 3),
@@ -228,7 +227,7 @@ class _BerandaWidgetState extends State<BerandaWidget> {
               vertical: hitungPersentase(MediaQuery.of(context).size.height, 5),
             ),
             padding: const EdgeInsets.all(10),
-            color: Colors.teal[100],
+            color: Color.fromARGB(255, 178, 186, 223),
             alignment: Alignment.centerLeft,
             width: double.infinity,
             child: Row(
