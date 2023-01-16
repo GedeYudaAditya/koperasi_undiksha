@@ -35,6 +35,9 @@ class _WrapperState extends State<Wrapper> {
 
   List<UserModel?> _mod = [null];
 
+  // Firebase push notification instance
+  // FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+
   // bool toggle = false;
 
   void awaiting() async {

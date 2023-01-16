@@ -1,7 +1,10 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:koperasi_undiksha/models/user_model.dart';
 import 'package:koperasi_undiksha/references/user_references.dart';
 import 'package:koperasi_undiksha/services/user_services.dart';
+import 'package:push_notification/push_notification.dart';
 
 class Tarikan extends StatefulWidget {
   Tarikan({Key? key}) : super(key: key);
@@ -20,6 +23,11 @@ class _TarikanState extends State<Tarikan> {
   String? userId;
 
   UserModel? myUser;
+
+  late Notificator notification;
+
+  String notificationKey = 'key';
+  String _bodyText = 'notification test';
 
   final _nominalController = TextEditingController();
 
@@ -41,6 +49,20 @@ class _TarikanState extends State<Tarikan> {
           backgroundColor: Colors.green,
         ),
       );
+
+      notification.show(
+        Random().nextInt(100),
+        'Transaksi Berhasil',
+        'Penarikan sebesar $nominal berhasil',
+        imageUrl: 'https://www.lumico.io/wp-019/09/flutter.jpg',
+        data: {notificationKey: '[notification data]'},
+        notificationSpecifics: NotificationSpecifics(
+          AndroidNotificationSpecifics(
+            autoCancelable: true,
+          ),
+        ),
+      );
+
     }).onError((error, stackTrace) {
       // snackbar
       ScaffoldMessenger.of(context).showSnackBar(
@@ -61,6 +83,23 @@ class _TarikanState extends State<Tarikan> {
   void initState() {
     getUser();
     super.initState();
+    notification = Notificator(
+      onPermissionDecline: () {
+        // ignore: avoid_print
+        print('permission decline');
+      },
+      onNotificationTapCallback: (notificationData) {
+        setState(
+          () {
+            _bodyText = 'notification open: '
+                '${notificationData[notificationKey].toString()}';
+          },
+        );
+      },
+    )..requestPermissions(
+        requestSoundPermission: true,
+        requestAlertPermission: true,
+      );
   }
 
   @override

@@ -1,7 +1,10 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:koperasi_undiksha/models/user_model.dart';
 import 'package:koperasi_undiksha/references/user_references.dart';
 import 'package:koperasi_undiksha/services/user_services.dart';
+import 'package:push_notification/push_notification.dart';
 
 class Transfer extends StatefulWidget {
   Transfer({Key? key}) : super(key: key);
@@ -25,6 +28,11 @@ class _TransferState extends State<Transfer> {
   UserModel? myUser;
 
   int? biayaAdmin;
+
+  late Notificator notification;
+
+  String notificationKey = 'key';
+  String _bodyText = 'notification test';
 
   final _nominalController = TextEditingController();
   final _nomorRekeningController = TextEditingController();
@@ -68,6 +76,19 @@ class _TransferState extends State<Transfer> {
               const SnackBar(
                 content: Text('Transfer berhasil'),
                 backgroundColor: Colors.green,
+              ),
+            );
+
+            notification.show(
+              Random().nextInt(100),
+              'Transfer berhasil',
+              'Transfer sebesar $nominal berhasil',
+              imageUrl: 'https://www.lumico.io/wp-019/09/flutter.jpg',
+              data: {notificationKey: '[notification data]'},
+              notificationSpecifics: NotificationSpecifics(
+                AndroidNotificationSpecifics(
+                  autoCancelable: true,
+                ),
               ),
             );
           }).onError((error, stackTrace) {
@@ -117,6 +138,23 @@ class _TransferState extends State<Transfer> {
   void initState() {
     getUser();
     super.initState();
+    notification = Notificator(
+      onPermissionDecline: () {
+        // ignore: avoid_print
+        print('permission decline');
+      },
+      onNotificationTapCallback: (notificationData) {
+        setState(
+          () {
+            _bodyText = 'notification open: '
+                '${notificationData[notificationKey].toString()}';
+          },
+        );
+      },
+    )..requestPermissions(
+        requestSoundPermission: true,
+        requestAlertPermission: true,
+      );
   }
 
   @override

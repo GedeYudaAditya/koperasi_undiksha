@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:koperasi_undiksha/models/user_model.dart';
 import 'package:koperasi_undiksha/references/user_references.dart';
 import 'package:koperasi_undiksha/services/user_services.dart';
+import 'package:push_notification/push_notification.dart';
 
 class Setoran extends StatefulWidget {
   Setoran({Key? key}) : super(key: key);
@@ -21,6 +22,11 @@ class _SetoranState extends State<Setoran> {
 
   UserModel? myUser;
 
+  late Notificator notification;
+
+  String notificationKey = 'key';
+  String _bodyText = 'notification test';
+
   final _nominalController = TextEditingController();
 
   void getUser() async {
@@ -39,6 +45,19 @@ class _SetoranState extends State<Setoran> {
         const SnackBar(
           content: Text('Setoran berhasil'),
           backgroundColor: Colors.green,
+        ),
+      );
+
+      notification.show(
+        1,
+        'Transaksi Berhasil',
+        'Setoran sebesar $nominal berhasil',
+        imageUrl: 'https://www.lumico.io/wp-019/09/flutter.jpg',
+        data: {notificationKey: '[notification data]'},
+        notificationSpecifics: NotificationSpecifics(
+          AndroidNotificationSpecifics(
+            autoCancelable: true,
+          ),
         ),
       );
     }).onError((error, stackTrace) {
@@ -61,6 +80,23 @@ class _SetoranState extends State<Setoran> {
   void initState() {
     getUser();
     super.initState();
+    notification = Notificator(
+      onPermissionDecline: () {
+        // ignore: avoid_print
+        print('permission decline');
+      },
+      onNotificationTapCallback: (notificationData) {
+        setState(
+          () {
+            _bodyText = 'notification open: '
+                '${notificationData[notificationKey].toString()}';
+          },
+        );
+      },
+    )..requestPermissions(
+        requestSoundPermission: true,
+        requestAlertPermission: true,
+      );
   }
 
   @override
