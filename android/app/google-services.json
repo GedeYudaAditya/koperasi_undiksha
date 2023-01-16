@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1050167267665",
+    "project_id": "koperasi-undiksha",
+    "storage_bucket": "koperasi-undiksha.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1050167267665:android:89452013c5671bb6a94370",
+        "android_client_info": {
+          "package_name": "com.example.koperasi_undiksha"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1050167267665-kpheji5bou62p2f2d9qtpp3nari7pk8d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2pOLeZEBLPLGtx-1348i0q_g8_DjLaGs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1050167267665-kpheji5bou62p2f2d9qtpp3nari7pk8d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

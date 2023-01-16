@@ -41,6 +41,8 @@ dependencies:
   provider: ^6.0.5
   qr_flutter: ^4.0.0
   push_notification: ^1.1.1
+  firebase_messaging: ^14.2.1
+  firebase: ^9.0.3
 
 dev_dependencies:
   flutter_test:

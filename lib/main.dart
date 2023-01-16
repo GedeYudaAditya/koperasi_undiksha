@@ -8,8 +8,14 @@ import 'package:koperasi_undiksha/services/user_services.dart';
 import 'package:koperasi_undiksha/wrapper.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
+  // firebase initialize app
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   runApp(const MyApp());
 }
 
@@ -19,6 +25,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    getToken();
     return MaterialApp(
       builder: (context, child) => ResponsiveWrapper.builder(
           ClampingScrollWrapper.builder(context, child!),
@@ -52,4 +59,21 @@ class MyApp extends StatelessWidget {
       },
     );
   }
+}
+
+void getToken() async {
+    final fcmToken = await FirebaseMessaging.instance.getToken();
+    print('FCM Token: $fcmToken');
+    // FirebaseMessaging.instance.onTokenRefresh
+    // .listen((fcmToken) {
+    //   // TODO: If necessary send token to application server.
+
+    //   // Note: This callback is fired at each app startup and whenever a new
+    //   // token is generated.
+    // })
+    // .onError((err) {
+    //   // Error getting token.
+    // });
+
+    // await FirebaseMessaging.instance.setAutoInitEnabled(true);
 }
