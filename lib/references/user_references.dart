@@ -90,4 +90,15 @@ class UserReferences {
     _prefs = await _pref;
     return _prefs!.getString('qrScanResult');
   }
+
+  // token messaging
+  void setTokenMessaging(String tokenMessaging) async {
+    _prefs = await _pref;
+    _prefs!.setString('tokenMessaging', tokenMessaging);
+  }
+
+  Future<String?> getTokenMessaging() async {
+    _prefs = await _pref;
+    return _prefs!.getString('tokenMessaging');
+  }
 }

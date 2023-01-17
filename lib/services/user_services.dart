@@ -1,11 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:koperasi_undiksha/models/user_model.dart';
 import 'package:koperasi_undiksha/references/user_references.dart';
+import 'package:koperasi_undiksha/services/notif_services.dart';
 
 class UserServices extends ChangeNotifier {
   UserReferences userReferences = UserReferences();
   ChangeNotifier changeNotifier = ChangeNotifier();
+  NotifService notifService = NotifService();
 
   String baseUrl = 'http://apikoperasi.rey1024.com/';
 
@@ -120,6 +123,8 @@ class UserServices extends ChangeNotifier {
             userReferences.setPassword(user[0].password);
             userReferences.setNomorRekening(user[0].nomorRekening);
 
+            notifService.getToken();
+
             // print(data);
 
             notifyListeners();
@@ -173,6 +178,38 @@ class UserServices extends ChangeNotifier {
           // userReferences.setSaldo(user.saldo);
           // userReferences.setNomorRekening(user.nomorRekening);
 
+          //  FirestoreServices firestoreServices = FirestoreServices();
+
+          //   // check apakah user sudah ada di firestore
+          //   DocumentSnapshot documentSnapshot = await firestoreServices.getUserDocument(data.userId);
+
+          //   // get token
+          //   String? token = await userReferences.getTokenMessaging();
+
+          //   if (documentSnapshot.exists) {
+          //     print('user sudah ada di firestore');
+          //     firestoreServices.updateUser({
+          //       'user_id': data.userId,
+          //       'username': data.username,
+          //       'nama': data.nama,
+          //       'saldo': data.saldo,
+          //       'password': data.password,
+          //       'nomor_rekening': data.nomorRekening,
+          //       'token': token,
+          //     });
+          //   } else {
+          //     print('user belum ada di firestore');
+          //     firestoreServices.createUser({
+          //       'user_id': data.userId,
+          //       'username': data.username,
+          //       'nama': data.nama,
+          //       'saldo': data.saldo,
+          //       'password': data.password,
+          //       'nomor_rekening': data.nomorRekening,
+          //       'token': token,
+          //     });
+          //   }
+
           notifyListeners();
           return true;
         } else {
@@ -188,8 +225,7 @@ class UserServices extends ChangeNotifier {
 
   // Setoran
   Future<bool?> setoran(
-      {required String userId,
-      required String nominal}) async {
+      {required String userId, required String nominal}) async {
     Dio dio = Dio();
     String url = '${baseUrl}setoran';
 
@@ -234,8 +270,7 @@ class UserServices extends ChangeNotifier {
 
   //  tarikan
   Future<bool?> tarikan(
-      {required String userId,
-      required String nominal}) async {
+      {required String userId, required String nominal}) async {
     Dio dio = Dio();
     String url = '${baseUrl}tarikan';
 
