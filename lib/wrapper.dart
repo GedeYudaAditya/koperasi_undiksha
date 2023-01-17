@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:koperasi_undiksha/references/user_references.dart';
+import 'package:koperasi_undiksha/services/notif_services.dart';
 import 'package:koperasi_undiksha/services/user_services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -35,10 +36,11 @@ class _WrapperState extends State<Wrapper> {
 
   List<UserModel?> _mod = [null];
 
-  // Firebase push notification instance
-  // FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
-
-  // bool toggle = false;
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   notifService.getToken();
+  // }
 
   void awaiting() async {
     await userReferences.getUserId().then((value) {
@@ -47,12 +49,7 @@ class _WrapperState extends State<Wrapper> {
       });
     });
   }
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   // awaiting();
 
-  // }
   void datas(userId) async {
     if (_mod[0] == null) {
       _mod = await userServices.getUser(userId: userId!);
@@ -71,6 +68,8 @@ class _WrapperState extends State<Wrapper> {
     // print('userId: $userId');
 
     if (userId != null && userId != '') {
+      // jalankan sekali fungsi get token
+
       return Scaffold(
         // extendBodyBehindAppBar: true,
         appBar: AppBar(

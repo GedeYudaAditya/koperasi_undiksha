@@ -29,6 +29,13 @@
             {
               "client_id": "1050167267665-kpheji5bou62p2f2d9qtpp3nari7pk8d.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "1050167267665-483a4oj2a8n5qe8sg3k549ehks4jpfi4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.koperasiUndiksha"
+              }
             }
           ]
         }

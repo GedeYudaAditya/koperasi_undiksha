@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:koperasi_undiksha/models/user_model.dart';
 import 'package:koperasi_undiksha/references/user_references.dart';
+import 'package:koperasi_undiksha/services/notif_services.dart';
 import 'package:koperasi_undiksha/services/user_services.dart';
 import 'package:push_notification/push_notification.dart';
 
@@ -38,6 +39,9 @@ class _TransferState extends State<Transfer> {
   final _nomorRekeningController = TextEditingController();
   final _pinController = TextEditingController();
 
+  // notif firebase
+  NotifService notifService = NotifService();
+
   void getUser() async {
     userId = await pref.getUserId();
     user = await userServices.getUser(userId: userId!);
@@ -57,6 +61,8 @@ class _TransferState extends State<Transfer> {
       }
     }
     userId = await pref.getUserId();
+
+    String? token = await notifService.getTokenFromFirebaseFirestore(rekening);
 
     if (isExist) {
       // check password
@@ -79,6 +85,7 @@ class _TransferState extends State<Transfer> {
               ),
             );
 
+            // Local notification
             notification.show(
               Random().nextInt(100),
               'Transfer berhasil',
@@ -91,6 +98,13 @@ class _TransferState extends State<Transfer> {
                 ),
               ),
             );
+
+            // Firebase notification
+            notifService.sendPushNotification(
+                title: 'Saldo Telah Masuk!',
+                body: 'Saldo sebesar $nominal telah masuk ke akun anda',
+                token: token!);
+            
           }).onError((error, stackTrace) {
             // snackbar
             ScaffoldMessenger.of(context).showSnackBar(
