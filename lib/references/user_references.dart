@@ -5,10 +5,7 @@ class UserReferences {
 
   SharedPreferences? _prefs;
 
-  // Future<SharedPreferences> init() async {
-  //   return _prefs = await SharedPreferences.getInstance();
-  // }
-
+  // user credentials
   void setUserId(String userId) async {
     _prefs = await _pref;
     _prefs!.setString('userId', userId);

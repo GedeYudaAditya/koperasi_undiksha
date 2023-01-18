@@ -105,18 +105,8 @@ class _TarikanState extends State<Tarikan> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // extendBodyBehindAppBar: true,
         appBar: AppBar(
           centerTitle: true,
-          // shape: const RoundedRectangleBorder(
-          //   borderRadius: BorderRadius.vertical(
-          //     bottom: Radius.circular(10),
-          //   ),
-          // ),
-          // leading: Container(
-          //   margin: const EdgeInsets.only(left: 10),
-          //   child: Image.asset('assets/images/logo.png'),
-          // ),
           backgroundColor: Color.fromARGB(255, 103, 2, 255),
           title: const Text('Penarikan Saldo'),
         ),
@@ -124,9 +114,6 @@ class _TarikanState extends State<Tarikan> {
           builder: (context, snapshot) {
             if (myUser != null) {
               return Container(
-                // padding: const EdgeInsets.only(
-                //         top: 55,
-                //       ),
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage('assets/images/bg.png'),

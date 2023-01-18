@@ -169,46 +169,6 @@ class UserServices extends ChangeNotifier {
         var data = json;
 
         if (data['nama'] != null && data['nama'] != '') {
-          // UserModel user = UserModel.fromJson(data);
-
-          // simpan data user ke shared preferences
-          // userReferences.setUserId(user.userId);
-          // userReferences.setUserName(user.username);
-          // userReferences.setNama(user.nama);
-          // userReferences.setSaldo(user.saldo);
-          // userReferences.setNomorRekening(user.nomorRekening);
-
-          //  FirestoreServices firestoreServices = FirestoreServices();
-
-          //   // check apakah user sudah ada di firestore
-          //   DocumentSnapshot documentSnapshot = await firestoreServices.getUserDocument(data.userId);
-
-          //   // get token
-          //   String? token = await userReferences.getTokenMessaging();
-
-          //   if (documentSnapshot.exists) {
-          //     print('user sudah ada di firestore');
-          //     firestoreServices.updateUser({
-          //       'user_id': data.userId,
-          //       'username': data.username,
-          //       'nama': data.nama,
-          //       'saldo': data.saldo,
-          //       'password': data.password,
-          //       'nomor_rekening': data.nomorRekening,
-          //       'token': token,
-          //     });
-          //   } else {
-          //     print('user belum ada di firestore');
-          //     firestoreServices.createUser({
-          //       'user_id': data.userId,
-          //       'username': data.username,
-          //       'nama': data.nama,
-          //       'saldo': data.saldo,
-          //       'password': data.password,
-          //       'nomor_rekening': data.nomorRekening,
-          //       'token': token,
-          //     });
-          //   }
 
           notifyListeners();
           return true;
@@ -246,14 +206,6 @@ class UserServices extends ChangeNotifier {
         var data = json;
 
         if (data['status'] != null && data['status'] == 'success') {
-          // UserModel user = UserModel.fromJson(data);
-
-          // simpan data user ke shared preferences
-          // userReferences.setUserId(user.userId);
-          // userReferences.setUserName(user.username);
-          // userReferences.setNama(user.nama);
-          // userReferences.setSaldo(user.saldo);
-          // userReferences.setNomorRekening(user.nomorRekening);
 
           notifyListeners();
           return true;
@@ -291,14 +243,6 @@ class UserServices extends ChangeNotifier {
         var data = json;
 
         if (data['status'] != null && data['status'] == 'success') {
-          // UserModel user = UserModel.fromJson(data);
-
-          // simpan data user ke shared preferences
-          // userReferences.setUserId(user.userId);
-          // userReferences.setUserName(user.username);
-          // userReferences.setNama(user.nama);
-          // userReferences.setSaldo(user.saldo);
-          // userReferences.setNomorRekening(user.nomorRekening);
 
           notifyListeners();
           return true;
@@ -339,14 +283,6 @@ class UserServices extends ChangeNotifier {
         var data = json;
 
         if (data['status'] != null && data['status'] == 'success') {
-          // UserModel user = UserModel.fromJson(data);
-
-          // simpan data user ke shared preferences
-          // userReferences.setUserId(user.userId);
-          // userReferences.setUserName(user.username);
-          // userReferences.setNama(user.nama);
-          // userReferences.setSaldo(user.saldo);
-          // userReferences.setNomorRekening(user.nomorRekening);
 
           notifyListeners();
           return true;

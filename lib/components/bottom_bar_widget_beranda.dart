@@ -21,28 +21,15 @@ class _BottomBarWidgetBerandaState extends State<BottomBarWidgetBeranda> {
           children: [
             IconButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/setting');
+                Navigator.pushNamed(context, '/login');
               },
-              icon: const Icon(Icons.settings),
+              icon: const Icon(Icons.home),
             ),
-            // IconButton(
-            //   onPressed: () {
-            //     Navigator.pushNamed(context, '/transfer');
-            //   },
-            //   icon: const Icon(Icons.qr_code_scanner),
-            // ),
-            // IconButton(
-            //   onPressed: () {
-            //     Navigator.pushNamed(context, '/riwayat');
-            //   },
-            //   icon: const Icon(Icons.history),
-            // ),
             IconButton(
               onPressed: () {
-                // Navigator.push(context,
-                //     MaterialPageRoute(builder: (context) => ListUserPage()));
+                Navigator.pushNamed(context, '/tarik');
               },
-              icon: const Icon(Icons.person),
+              icon: const Icon(Icons.credit_card),
             ),
           ],
         ),
