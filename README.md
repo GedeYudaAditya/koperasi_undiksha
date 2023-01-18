@@ -1,16 +1,15 @@
-# koperasi_undiksha
+# E-Koperasi Undiksha
 
-A new Flutter project.
+E-Koperasi Undiksha merupakan aplikasi replika untuk melancarkan transaksi saldo oleh user yang ada di aplikasi. Aplikasi memiliki beberapa fitur seperti : - tarik saldo - setor saldo - transfer saldo - scan qr transfer
 
-## Getting Started
+Terdapat beberapa package yang di gunakan pada aplikasi ini seperti : - dio: ^4.0.6 - flutter_barcode_scanner: ^2.0.0 - responsive_framework: ^0.2.0 - shared_preferences: ^2.0.15 - url_launcher: ^6.1.7 - provider: ^6.0.5 - qr_flutter: ^4.0.0 - push_notification: ^1.1.1 - firebase_messaging: ^14.2.1 - firebase_core: ^2.4.1 - cloud_firestore: ^4.3.1
 
-This project is a starting point for a Flutter application.
+## Link Apk
 
-A few resources to get you started if this is your first Flutter project:
+[E-Koperasi Undiksha V1.0](https://drive.google.com/drive/folders/1-ODcuu_6Uajot92qPoort8GBtnU_loe2?usp=sharing)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Link Video
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+(sedang-upload)
+
+## Dokumentasi
