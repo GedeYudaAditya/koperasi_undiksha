@@ -26,5 +26,9 @@ Terdapat beberapa package yang di gunakan pada aplikasi ini seperti :
 [Link penjelasan aplikasi E-Koperasi Undiksha](https://youtu.be/wHiTsAUJC8o)
 
 ## Dokumentasi
-
+![picture alt](/assets/readme/1.jpg "Title is optional")
+![picture alt](/assets/readme/2.jpg "Title is optional")
+![picture alt](/assets/readme/3.jpg "Title is optional")
+![picture alt](/assets/readme/4.jpg "Title is optional")
+![picture alt](/assets/readme/5.jpg "Title is optional")
 
