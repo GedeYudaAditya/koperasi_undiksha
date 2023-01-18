@@ -71,7 +71,6 @@ class _TransferState extends State<Transfer> {
 
         // biaya admin adalah 4 digit nomor rekening terakhir akun yang melakukan transfer
         // rekening memiliki total 5 digit
-
         if (myUser!.saldo >= (int.parse(nominal) + biayaAdmin!)) {
           await userServices
               .transfer(
@@ -180,19 +179,9 @@ class _TransferState extends State<Transfer> {
     }
 
     return Scaffold(
-        // extendBodyBehindAppBar: true,
         appBar: AppBar(
           centerTitle: true,
-          // shape: const RoundedRectangleBorder(
-          //   borderRadius: BorderRadius.vertical(
-          //     bottom: Radius.circular(10),
-          //   ),
-          // ),
-          // leading: Container(
-          //   margin: const EdgeInsets.only(left: 10),
-          //   child: Image.asset('assets/images/logo.png'),
-          // ),
-          backgroundColor: Color.fromARGB(255, 103, 2, 255),
+          backgroundColor: const Color.fromARGB(255, 103, 2, 255),
           title: const Text('Transfer Saldo'),
         ),
         body: FutureBuilder(

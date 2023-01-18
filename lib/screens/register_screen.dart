@@ -25,18 +25,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        // extendBodyBehindAppBar: true,
         appBar: AppBar(
           centerTitle: true,
-          // shape: const RoundedRectangleBorder(
-          //   borderRadius: BorderRadius.vertical(
-          //     bottom: Radius.circular(10),
-          //   ),
-          // ),
-          // leading: Container(
-          //   margin: const EdgeInsets.only(left: 10),
-          //   child: Image.asset('assets/images/logo.png'),
-          // ),
           backgroundColor: Color.fromARGB(255, 103, 2, 255),
           title: const Text('Register'),
         ),
