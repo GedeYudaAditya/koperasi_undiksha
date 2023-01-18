@@ -23,7 +23,7 @@ Terdapat beberapa package yang di gunakan pada aplikasi ini seperti :
 [E-Koperasi Undiksha V1.0](https://drive.google.com/drive/folders/1-ODcuu_6Uajot92qPoort8GBtnU_loe2?usp=sharing)
 
 ## Link Video
-(sedang-upload)
+[Link penjelasan aplikasi E-Koperasi Undiksha](https://youtu.be/wHiTsAUJC8o)
 
 ## Dokumentasi
 
